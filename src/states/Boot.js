@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
 import WebFont from 'webfontloader';
 
-import Utils from '../utils/Utils';
+import Utils from '../Utils/Utils';
 
-import Logo from '../sprites/Logo';
+import Logo from '../Sprites/Logo';
 
 
 
@@ -45,7 +45,7 @@ export default class extends Phaser.State {
 
   render () {
     if (this.fontsReady) {
-      this.game.time.events.add( 3000,() => {
+      this.game.time.events.add( 1000,() => {
         this.state.start('Game');
       });
     }

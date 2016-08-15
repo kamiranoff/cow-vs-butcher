@@ -3,24 +3,21 @@ import Phaser from 'phaser'
 import Boot from './Boot';
 import Game from './Game';
 
-import Utils  from '../utils/Utils';
+import Utils  from '../Utils/Utils';
 
 class Preloader extends Phaser.State {
   init () {}
 
   preload () {
     //put all your assets here if you'd like them in one place
-    this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBg');
-    this.loaderBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBar');
-    Utils.centerGameObjects([this.loaderBg, this.loaderBar]);
 
-    this.load.setPreloadSprite(this.loaderBar);
     //
     // load your assets
     //
     this.load.image('logo', 'assets/images/logo-ka.png');
   }
 
+  // you initialize all variables, images, sounds, classes, etc...
   create () {
     this.initStates();
     this.setScale();
