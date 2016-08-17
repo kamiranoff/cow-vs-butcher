@@ -12,6 +12,10 @@ class Utils {
     sprite.height = sprite.texture.height - (sprite.texture.height * percentWidth / 100);
   }
 
+  static getRandomFloatingPoint(from, to) {
+    return Math.random() * (to - from) + from;
+  }
+
 }
 
 export default Utils;

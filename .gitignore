@@ -4,3 +4,6 @@ dist/
 
 #ide
 .idea
+
+npm-debug.log
+sources

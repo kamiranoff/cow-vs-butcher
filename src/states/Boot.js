@@ -1,59 +1,68 @@
-import Phaser from 'phaser';
 import WebFont from 'webfontloader';
 
-import Utils from '../Utils/Utils';
 
+import Utils from '../Utils/Utils';
 import Logo from '../Sprites/Logo';
 
+import {HALF} from '../contants/math';
 
-
-export default class extends Phaser.State {
-  init () {
-    this.stage.backgroundColor = '#123';
+class Boot extends Phaser.State {
+  init() {
     this.fontsReady = false;
     this.fontsLoaded = this.fontsLoaded.bind(this);
   }
 
-  preload () {
+  preload() {
+
+
     WebFont.load({
       google: {
         families: ['Nunito']
       },
+      custom: {
+        families: ['28-days-later'],
+        urls: ['src/css/style.css']
+      },
       active: this.fontsLoaded
     });
 
-    let text = this.add.text(this.world.centerX, this.world.centerY, 'loading fonts', { font: '16px Arial', fill: '#dddddd', align: 'center' });
-    text.anchor.setTo(0.5, 0.5);
+    this.game.load.image("Logo", "src/assets/images/logo-ka.png");
+    this.game.load.image("PreloaderBackground", "src/assets/Boot/Background.png");
+    this.game.load.image("bloodier_saw", "src/assets/Game/saws/bloodier_saw.png");
 
-    this.load.image('loaderBg', './assets/images/loader-bg.png');
-    this.load.image('loaderBar', './assets/images/loader-bar.png');
+    //Cow
+    this.game.load.atlas("Cow", "src/assets/Game/Cow/Cow.png", "src/assets/Game/Cow/Cow.json");
+    this.game.load.atlas("Cow2", "src/assets/Game/Cow/Cow2.png", "src/assets/Game/Cow/Cow2.json");
+
+    //Butcher
+    this.game.load.atlas("Butcher", "src/assets/Game/Butcher/Butcher.png", "src/assets/Game/Butcher/Butcher.json");
+    this.game.load.atlas("Butcher2", "src/assets/Game/Butcher/Butcher2.png", "src/assets/Game/Butcher/Butcher2.json");
+
   }
 
   create() {
-    this.logo = new Logo({
-      game: this.game,
-      x: this.game.world.centerX,
-      y: this.game.world.centerY,
-      asset: 'logo'
-    });
+    const halfWidth = this.game.width * HALF;
+    const halfHeight = this.game.height * HALF;
 
-    // set the sprite width to 30% of the game width
-    Utils.setResponsiveWidth(this.logo, 30, this.game.world);
-    this.game.add.existing(this.logo);
+    this.game.stage.backgroundColor = "#FFF";
+    this.game.scale.scaleMode = Phaser.ScaleManager.NO_SCALE;
+    const bootLogo = this.game.add.image(halfWidth, halfHeight, "Logo");
+    bootLogo.anchor.set(HALF,HALF);
 
   }
 
-  render () {
+  render() {
     if (this.fontsReady) {
-      this.game.time.events.add( 1000,() => {
-        this.state.start('Game');
-      });
+      this.game.state.start("Preloader");
     }
   }
 
-  fontsLoaded () {
+  fontsLoaded() {
     console.log('font loaded');
     this.fontsReady = true
   }
 
 }
+
+
+export default Boot;
