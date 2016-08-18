@@ -100,6 +100,15 @@ class Preloader extends Phaser.State {
     bloodEmitter.emitter.x = halfWidth;
     bloodEmitter.emitter.y = thirdHeight;
     bloodEmitter.emitter.start(false, 2000, 0, 5000, false);
+
+    this.saw = this.game.add.sprite(this.game.width * 0.5, this.game.height * 0.3, "bloodier_saw");
+    this.saw.scale.set(0.5);
+    this.saw.anchor.set(0.5);
+
+  }
+
+  update() {
+    this.saw.rotation += 0.02;
   }
 
 
