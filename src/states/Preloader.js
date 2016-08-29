@@ -79,7 +79,7 @@ class Preloader extends Phaser.State {
     const halfHeight = this.game.height * HALF;
     const thirdHeight = this.game.height * 0.33;
 
-    this.game.time.events.add(15000, () => {
+    this.game.time.events.add(1000, () => {
       this.game.state.start("Menu");
     }, this);
 
@@ -101,7 +101,7 @@ class Preloader extends Phaser.State {
     bloodEmitter.emitter.y = thirdHeight;
     bloodEmitter.emitter.start(false, 2000, 0, 5000, false);
 
-    this.saw = this.game.add.sprite(this.game.width * 0.5, this.game.height * 0.3, "bloodier_saw");
+    this.saw = this.game.add.sprite(halfWidth, this.game.height * 0.3, "bloodier_saw");
     this.saw.scale.set(0.5);
     this.saw.anchor.set(0.5);
 

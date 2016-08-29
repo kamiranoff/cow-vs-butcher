@@ -1,6 +1,7 @@
 /*
- Watching : 4.4 Cow Vs Butcher 1/11 (Project Setup, Preloader and Boot) - Phaser Game
- https://youtu.be/1o55_seD2Q4?t=1h37m56s
+ Watching : 4.5 Cow Vs Butcher 2/11 (Main Menu, Blood and Bone Emitters) - Phaser Game
+ playlist: https://www.youtube.com/playlist?list=PLRsPe93DnzPOrVx111HHMW0w4tXe0zdLb
+ video: https://www.youtube.com/watch?v=QxH9_qL730o&index=6&list=PLRsPe93DnzPOrVx111HHMW0w4tXe0zdLb
  */
 
 import 'pixi'
@@ -30,4 +31,4 @@ class CowVsButcher extends Phaser.Game {
 
 }
 
-window.game = new CowVsButcher(1200, 800);
+window.game = new CowVsButcher(1280, 720);
